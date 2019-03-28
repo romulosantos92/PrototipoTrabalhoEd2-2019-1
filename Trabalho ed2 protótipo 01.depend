@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1553813713 source:c:\codeblocks projects\playground\trabalho ed2 protótipo 01\main.cpp
+	<iostream>
+	"ListaRegistros.h"
+	"NoListaRegistros.h"
+	"SupportLib.h"
+
+1553814615 source:c:\codeblocks projects\playground\trabalho ed2 protótipo 01\src\listaregistros.cpp
+	"ListaRegistros.h"
+
+1553812524 c:\codeblocks projects\playground\trabalho ed2 protótipo 01\include\listaregistros.h
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<sstream>
+	"NoListaRegistros.h"
+
+1553619113 source:c:\codeblocks projects\playground\trabalho ed2 protótipo 01\src\nolistaregistros.cpp
+	"NoListaRegistros.h"
+
+1553271400 c:\codeblocks projects\playground\trabalho ed2 protótipo 01\include\nolistaregistros.h
+	<iostream>
+
+1553811113 source:c:\codeblocks projects\playground\trabalho ed2 protótipo 01\src\supportlib.cpp
+	"SupportLib.h"
+
+1553378104 c:\codeblocks projects\playground\trabalho ed2 protótipo 01\include\supportlib.h
+	<iostream>
+	<ctime>
+	"ListaRegistros.h"
+	"NoListaRegistros.h"
+
