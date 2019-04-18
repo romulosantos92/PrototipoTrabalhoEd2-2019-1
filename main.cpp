@@ -1,19 +1,18 @@
 #include <iostream>
-#include "ListaRegistros.h"
-#include"NoListaRegistros.h"
+#include <fstream>
+#include "Registro.h"
 #include "SupportLib.h"
 
 using namespace std;
 
 int main()
 {
-    ListaRegistros l;
     SupportLib support;
+    int tamanhoEntrada;
+    int *v=support.leArquivoEntrada(&tamanhoEntrada);
+    for(int i=0; i<tamanhoEntrada; i++)
+        cout << endl << v[i];
 
-    //l.leArquivo(1, 10000);
-    //support.bubbleSort(&l);
-    l.leArquivo(5);
-    //support.selectSort(&l);
 
     return 0;
 }

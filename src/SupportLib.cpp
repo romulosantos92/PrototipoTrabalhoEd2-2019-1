@@ -1,185 +1,315 @@
 #include "SupportLib.h"
 
+/**
+    Construtor padrão da classe.
+    Não recebe parâmetros.
+**/
 SupportLib::SupportLib()
 {
     //ctor
 }
 
+/**
+    Destrutor da classe.
+    Não recebe parâmetros.
+**/
 SupportLib::~SupportLib()
 {
     //dtor
 }
 
 /**
-    Ordena uma lista por meio do algoritmo BubbleSort.
-    Recebe como parâmetro um ponteiro para uma lista.
+    Lê o arquivo dos conjuntos de entrada.
+    retorna um ponteiro para um vetor de ints.
+    recebe como parametro:
+        *(int*) v - Ponteiro para um int que receberá o tamanho do vetor de entradas.
 **/
-void SupportLib::bubbleSort(ListaRegistros *lista)
+int* SupportLib::leArquivoEntrada(int *v)
 {
-    cout << "\nBubbleSort\n=======================================" << endl <<
-    "1-UserId\n2-MovieId\n3-Rating\n4-Timestamp" << endl <<
-    "=======================================\nEscolha uma opcao:\n";
-    int ans;
-    cin >> ans;
-    bool ordenada;
-    NoListaRegistros* p;
-    p=lista->getPrimeiro();
-    cout << endl << "=======================================";
-    if(ans==1)
-        cout << "\nOrdenando por UserId.";
-    else if(ans==2)
-        cout << "\nOrdenando por MovieId.";
-    else if(ans==3)
-        cout << "\nOrdenando por Ratings.";
-    else if(ans==4)
-        cout << "\nOrdenando por TimeStamp.";
-    cout << endl << "Ordenando valores, aguarde...\n====================================";
-    unsigned long int counter=0;
-    clock_t c1=clock();
-    while(true)
+    ifstream infile("entrada.txt");
+    int tam, val, *vet, i=0;
+    if(infile.is_open())
     {
-        ordenada=true;
-        while(p->getProx()!=NULL)
+        infile >> tam;
+        *v=tam;
+        vet=new int[tam];
+        while(!infile.eof())
         {
-            if((ans==1)&&(p->getUserId()>p->getProx()->getUserId()))
-            {
-                ordenada=false;
-                lista->troca(p, p->getProx());
-                counter++;
-            }
-            else if((ans==2)&&(p->getMovieId()>p->getProx()->getMovieId()))
-            {
-                ordenada=false;
-                lista->troca(p, p->getProx());
-                counter++;
-            }
-            else if((ans==3)&&(p->getRating()>p->getProx()->getRating()))
-            {
-                ordenada=false;
-                lista->troca(p, p->getProx());
-                counter++;
-            }
-            else if((ans==4)&&(p->getTimestamp()>p->getProx()->getTimestamp()))
-            {
-                ordenada=false;
-                lista->troca(p, p->getProx());
-                counter++;
-            }
-            p=p->getProx();
+            infile >> val;
+            vet[i]=val;
+            i++;
         }
-        if(ordenada)
-            break;
-        else
-            p=lista->getPrimeiro();
+        return vet;
     }
-    clock_t c2=clock();
-    double tempoExecucao=(c2-c1)*1000/(CLOCKS_PER_SEC);
-    cout << endl << "Foram realizadas " << counter << " operacoes de troca nos " << lista->getTam() << " registros." << endl <<
-    "Tempo de execucao: " << tempoExecucao/1000 << " segundos.";
+    else
+        cout << endl << "ERRO!";
 }
 
 /**
-    Ordena uma lista por meio do algoritmo SelectSort.
-    Recebe como parâmetro um ponteiro para uma lista.
+    Lê completamente o arquivo "ratings.csv";
+    Não possui retorno.
+    Não recebe parâmetros.
 **/
-void SupportLib::selectSort(ListaRegistros *lista)
+void SupportLib::leArquivo()
 {
-    cout << "\nSelectSort\n=======================================" << endl <<
-    "1-UserId\n2-MovieId\n3-Rating\n4-Timestamp" << endl <<
-    "=======================================\nEscolha uma opcao:\n";
-    int ans, horas=0, minutos=0;
-    double tempoExecucao=0, segundos=0, seg=0;
-    cin >> ans;
-    NoListaRegistros* p;
-    p=lista->getPrimeiro();
-    cout << endl << "=======================================";
-    if(ans==1)
-        cout << "\nOrdenando por UserId.";
-    else if(ans==2)
-        cout << "\nOrdenando por MovieId.";
-    else if(ans==3)
-        cout << "\nOrdenando por Ratings.";
-    else if(ans==4)
-        cout << "\nOrdenando por TimeStamp.";
-    cout << endl << "Ordenando valores, aguarde...\n=======================================";
-    unsigned long int counter=0;
-    NoListaRegistros *limiteInf=lista->getPrimeiro();
-    NoListaRegistros *menor;
-    clock_t c1=clock();
-    while(limiteInf->getProx()!=NULL)
+    //Ainda não implementado.
+}
+
+/**
+    Lê parte do arquivo "ratings.csv".
+    Não possui retorno.
+    recebe como parâmetros:
+        *(int) a - Índice inicial do conjunto.
+        *(int) b - Índice final do conjunto.
+**/
+Registro** SupportLib::leArquivo(int a, int b)
+{
+    Registro** vet=new Registro*[b-a];
+    ifstream Myfile("ratings.csv");
+    if(!Myfile.is_open())
     {
-        menor=limiteInf;
-        p=limiteInf;
-        while(p->getProx()!=NULL)
-        {
-            if((ans==1)&&(p->getUserId()<menor->getUserId()))
-            {
-                menor=p;
-            }
-            else if((ans==2)&&(p->getMovieId()<menor->getMovieId()))
-            {
-                menor=p;
-            }
-            else if((ans==3)&&(p->getRating()<menor->getRating()))
-            {
-                menor=p;
-            }
-            else if((ans==4)&&(p->getTimestamp()<menor->getTimestamp()))
-            {
-                menor=p;
-            }
-            p=p->getProx();
-        }
-        lista->troca(limiteInf, menor);
-
-        tempoExecucao=((clock()-c1)*1000)/CLOCKS_PER_SEC;
-
-        seg=tempoExecucao/1000; //(tempoExecucao-(horas*3600000)-(minutos*60000))/1000;
-
-        horas=((int)seg/3600);
-        minutos=(int)(seg-(horas*3600))/60;
-        segundos=seg-(horas*3600)-(minutos*60);//((int)seg%3600)%60;
-
-        //cout << endl << horas << ":" << minutos << ":" << segundos << "\t" << seg;
-
-        if((counter%(int)(lista->getTam()/10)==0)&&(tempoExecucao<1000))
-            cout << endl << (counter/(int)(lista->getTam()/10))*10 << "% dos valores ordenados em " <<
-            segundos*1000<< " milisegundos.";
-        else if((counter%(int)(lista->getTam()/10)==0)&&(tempoExecucao<60000))
-            cout << endl << (counter/(int)(lista->getTam()/10))*10 << "% dos valores ordenados em " <<
-            segundos << " segundo(s).";
-        else if((counter%(int)(lista->getTam()/10)==0)&&(tempoExecucao<3600000))
-            cout << endl << (counter/(int)(lista->getTam()/10))*10 << "% dos valores ordenados em " <<
-            minutos << " minuto(s) " << segundos << " segundo(s).";
-        else if((counter%(int)(lista->getTam()/10)==0)&&(tempoExecucao>=3600000))
-            cout << endl << (counter/(int)(lista->getTam()/10))*10 << "% dos valores ordenados em " <<
-            horas << " hora(s) " << minutos << " minuto(s) " << segundos << " segundo(s).";
-        counter++;
-        limiteInf=limiteInf->getProx();
+        cout << "\nERRO!\n";
     }
-    cout << endl << "100% dos valores ordenados.";
-    cout << endl << "=======================================";
-    clock_t c2=clock();
-    tempoExecucao=(c2-c1)*1000/(CLOCKS_PER_SEC);
-    cout << endl << "Foram realizadas " << counter << " operacoes de troca nos " << lista->getTam() << " registros." << endl <<
-    "Tempo de execucao: " << horas << "h " << minutos << "m " << segundos
-    << "s.\n=======================================";
+    else
+    {
+        string userId, movieId, rating, timestamp;
+        double doubleNumber;
+        int int1, int2, int3, i=0;
+        string line, myStr;
+
+        int counter=0;
+        Registro *p;
+        cout << endl << "Efetuando a leitura do arquivo, aguarde...";
+
+        while((getline(Myfile, line))&&(counter<b))
+        {
+            stringstream ss(line);
+            getline(ss, userId, ',');
+            getline(ss, movieId, ',');
+            getline(ss, rating, ',');
+            getline(ss, timestamp, ',');
+
+            if(counter<a)
+            {
+                counter++;
+                continue;
+            }
+
+            else
+            {
+                int1=atoi(userId.c_str());
+                int2=atoi(movieId.c_str());
+                doubleNumber=atof(rating.c_str());
+                int3=atoi(timestamp.c_str());
+
+                p=new Registro(int1, int2, doubleNumber, int3);
+                vet[i]=p;
+                i++;
+            }
+            if(counter==1)
+                cout << endl << "Efetuando contagem de registros.\nAguarde..." << endl;
+            counter ++;
+        }
+        cout << "\n\nLeitura efetuada com sucesso.\nExistem " << counter << " registros no arquivo.";
+        return vet;
+    }
 }
 
 /**
-    Ordena uma lista por meio do algoritmo InsertionSort.
-    Recebe como parâmetro um ponteiro para uma lista.
+    Lê um conjunto aleatório de dados do arquivo "ratings.csv".
+    Não possui retorno.
+    recebe como parâmetro:
+        *(int) tam - tamanho do conjunto de registros.
 **/
-void insertionSort(ListaRegistros * lista)
+void SupportLib::leArquivo(int tam)
 {
-
+    //Ainda não implementado.
 }
 
 /**
-    Ordena uma lista por meio do algoritmo MergeSort.
-    Recebe como parâmetro um ponteiro para uma lista.
+    Imprime completamente um conjunto.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(Registro*) vet - Conjunto de registros.
+        *(int) tam - Tamanho do conjunto.
 **/
-void mergeSort(ListaRegistros *lista, int tam)
+void SupportLib::imprimeConjunto(Registro *vet[], int tam)
 {
-
+    cout << endl << endl << "UserId\tMovieId\tRating\tTimestamp" << endl <<
+    "=============================================" << endl;
+    for(int i=0; i<tam; i++)
+    {
+        cout << endl;
+        vet[i]->imprime();
+    }
+    cout << endl;
 }
+
+/**
+    Imprime parcialmente um conjunto.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(Registro*) vet - Conjunto de registros.
+        *(int) tam - Tamanho do conjunto.
+        *(int) a - Ìndice inicial do conjunto.
+        *(int) a - Ìndice final do conjunto.
+**/
+void SupportLib::imprimeConjunto(Registro *vet[], int tam, int a, int b)
+{
+    cout << endl << endl << "UserId\tMovieId\tRating\tTimestamp" << endl <<
+    "=============================================" << endl;
+    for(int i=a; i<b; i++)
+    {
+        cout << endl;
+        vet[i]->imprime();
+    }
+    cout << endl;
+}
+
+/**
+    Troca os valores de 2 registros.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(Registro*) a - Registro 1.
+        *(Registro*) b - Registro 2.
+**/
+void SupportLib::troca(Registro *a, Registro *b)
+{
+    Registro *aux=new Registro;
+    this->copia(a, aux);
+    this->copia(b, a);
+    this->copia(aux, b);
+    delete aux;
+}
+
+/**
+    Troca os valores de 2 Duplas.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(Dupla*) a - Dupla 1.
+        *(Dupla*) b - Dupla 2.
+**/
+void SupportLib::troca(Dupla *a, Dupla *b)
+{
+    Dupla *aux=new Dupla;
+    this->copia(a, aux);
+    this->copia(b, a);
+    this->copia(aux, b);
+    delete aux;
+}
+
+/**
+    Copia os valores de um registro para outro.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(Registro*) a - Registro de origem.
+        *(Registro*) b - Registro de destino.
+**/
+void SupportLib::copia(Registro *a, Registro *b)
+{
+    b->setUserId(a->getUserId());
+    b->setMovieId(a->getMovieId());
+    b->setRating(a->getRating());
+    b->setTimestamp(a->getTimestamp());
+}
+
+/**
+    Copia os valores de uma Dupla para outra.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(Dupla*) a - Dupla de origem.
+        *(Dupla*) b - Dupla de destino.
+**/
+void SupportLib::copia(Dupla *a, Dupla *b)
+{
+    b->setUserId(a->getUserId());
+    b->setMovieId(a->getMovieId());
+}
+
+/**
+    Ordena um vetor de ints por meio de insertion sort.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(int) vet[] - Vetor de valores inteiros.
+        *(int) tam - Tamanho do vetor.
+**/
+void SupportLib::insertionSort(int vet[], int tam)
+{
+    int pivot, j;
+    for(int i=1; i<tam; i++)
+    {
+        pivot=vet[i];
+        j=i-1;
+        while((j>=0)&&(vet[j]>pivot))
+        {
+            vet[j+1]=vet[j];
+            j--;
+        }
+        vet[j+1]=pivot;
+    }
+}
+
+/**
+    Ordena um vetor de ints por meio de mergesort.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(int) vet[] - Vetor de valores inteiros.
+        *(int) tam - Tamanho do vetor.
+**/
+void SupportLib::mergeSort(int vet[], int tam)
+{
+    //Ainda não implementado.
+}
+
+/**
+    Ordena um vetor de ints por meio de heapsort.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(int) vet[] - Vetor de valores inteiros.
+        *(int) tam - Tamanho do vetor.
+**/
+void SupportLib::heapSort(int vet[], int tam)
+{
+    //Ainda não implementado.
+}
+
+/**
+    Ordena um vetor de ints por meio de outrosort.
+    Não possui retorno.
+    Recebe como parâmetro:
+        *(int) vet[] - Vetor de valores inteiros.
+        *(int) tam - Tamanho do vetor.
+**/
+void SupportLib::outroSort(int vet[], int tam)
+{
+    //Ainda não implementado.
+}
+
+/**
+    Ordena um vetor de ints por meio de quicksort recursivo.
+    Não possui retorno.
+**/
+void SupportLib::quickSortRecursivo(int vet[], int tam, int v)
+{
+    //Ainda não implementado.
+}
+
+/**
+    Ordena um vetor de ints por meio de quicksort mediana.
+    Não possui retorno.
+**/
+void SupportLib::quickSortMediana(int vet[], int tam, int v)
+{
+    //Ainda não implementado.
+}
+
+/**
+    Ordena um vetor de ints por meio de quicksort inserção.
+    Não possui retorno.
+**/
+void SupportLib::quickSortInsercao(int vet[], int tam, int v)
+{
+    //Ainda não implementado.
+}
+
+

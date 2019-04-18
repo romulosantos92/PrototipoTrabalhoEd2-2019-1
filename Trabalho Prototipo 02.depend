@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1555415639 source:c:\codeblocks projects\playground\trabalho prototipo 02\main.cpp
+	<iostream>
+	<fstream>
+	"Registro.h"
+	"SupportLib.h"
+
+1555429466 source:c:\codeblocks projects\playground\trabalho prototipo 02\src\registro.cpp
+	"Registro.h"
+
+1555346815 c:\codeblocks projects\playground\trabalho prototipo 02\include\registro.h
+	<iostream>
+
+1555430355 source:c:\codeblocks projects\playground\trabalho prototipo 02\src\supportlib.cpp
+	"SupportLib.h"
+
+1555431894 c:\codeblocks projects\playground\trabalho prototipo 02\include\supportlib.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<cstdlib>
+	"Registro.h"
+	"Dupla.h"
+
+1555429472 source:c:\codeblocks projects\playground\trabalho prototipo 02\src\dupla.cpp
+	"Dupla.h"
+
+1555429529 c:\codeblocks projects\playground\trabalho prototipo 02\include\dupla.h
+	<iostream>
+
