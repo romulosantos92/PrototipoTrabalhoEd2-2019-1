@@ -2,34 +2,111 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="include\SupportLib.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Dupla.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1641" topLine="40" />
-		</Cursor>
-	</File>
-	<File name="include\Registro.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="87" topLine="16" />
-		</Cursor>
-	</File>
-	<File name="src\Dupla.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1357" topLine="8" />
-		</Cursor>
-	</File>
-	<File name="src\Registro.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="839" topLine="42" />
-		</Cursor>
-	</File>
-	<File name="src\SupportLib.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7578" topLine="295" />
+			<Cursor1 position="939" topLine="48" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="284" topLine="0" />
+			<Cursor1 position="2971" topLine="57" />
+		</Cursor>
+	</File>
+	<File name="src\SupportLib.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="13427" topLine="99" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="11" />
+			<Collapse line="16" />
+			<Collapse line="21" />
+			<Collapse line="43" />
+			<Collapse line="55" />
+			<Collapse line="88" />
+			<Collapse line="142" />
+			<Collapse line="214" />
+			<Collapse line="220" />
+			<Collapse line="232" />
+			<Collapse line="244" />
+			<Collapse line="251" />
+			<Collapse line="258" />
+			<Collapse line="267" />
+			<Collapse line="276" />
+			<Collapse line="284" />
+			<Collapse line="290" />
+			<Collapse line="299" />
+			<Collapse line="305" />
+			<Collapse line="339" />
+			<Collapse line="374" />
+			<Collapse line="414" />
+			<Collapse line="451" />
+			<Collapse line="467" />
+			<Collapse line="483" />
+			<Collapse line="488" />
+			<Collapse line="493" />
+			<Collapse line="498" />
+			<Collapse line="509" />
+			<Collapse line="519" />
+			<Collapse line="530" />
+			<Collapse line="540" />
+			<Collapse line="551" />
+		</Folding>
+	</File>
+	<File name="include\Registro.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1459" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="src\Registro.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="include\SupportLib.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10448" topLine="112" />
+		</Cursor>
+		<Folding>
+			<Collapse line="22" />
+			<Collapse line="27" />
+			<Collapse line="32" />
+			<Collapse line="39" />
+			<Collapse line="51" />
+			<Collapse line="61" />
+			<Collapse line="68" />
+			<Collapse line="80" />
+			<Collapse line="92" />
+			<Collapse line="103" />
+			<Collapse line="111" />
+			<Collapse line="123" />
+			<Collapse line="131" />
+			<Collapse line="139" />
+			<Collapse line="147" />
+			<Collapse line="155" />
+			<Collapse line="163" />
+			<Collapse line="171" />
+			<Collapse line="183" />
+			<Collapse line="192" />
+			<Collapse line="200" />
+			<Collapse line="208" />
+			<Collapse line="218" />
+			<Collapse line="229" />
+			<Collapse line="237" />
+			<Collapse line="246" />
+			<Collapse line="254" />
+			<Collapse line="262" />
+			<Collapse line="270" />
+			<Collapse line="284" />
+			<Collapse line="295" />
+			<Collapse line="309" />
+			<Collapse line="320" />
+			<Collapse line="334" />
+		</Folding>
+	</File>
+	<File name="include\Dupla.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2075" topLine="71" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
